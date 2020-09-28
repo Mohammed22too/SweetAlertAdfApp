@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="SweetAlertPG">
+    <page>/SweetAlertPG.jsf</page>
+  </view>
+  <managed-bean id="__1">
+    <managed-bean-name>MyBean</managed-bean-name>
+    <managed-bean-class>org.diveinoracle.sweetalertadf.view.MyBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

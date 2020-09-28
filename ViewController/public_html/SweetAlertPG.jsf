@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="SweetAlertPG.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="50px" id="gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc2">
+                        <!-- Header -->
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1" marginStart="20px">
+                        <!-- Content -->
+                        <af:panelGroupLayout id="pgl2" layout="vertical">
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s1"/>
+                            </f:facet>
+                            <af:outputText value="Use SweetAlert in Oracle ADF" id="ot1"
+                                           inlineStyle="font-size:xx-large;"/>
+                            <af:button text="Show Sweet Alert from ClientListener" id="b2" actionDelivery="none">
+                                <af:clientListener method="showSweetAlert" type="mouseDown"/>
+                            </af:button>
+                            <af:button text="Show Sweet Alert from Java Bean" id="b1"
+                                       actionListener="#{MyBean.onClickShowSweetAlertBtn}"/>
+                            <af:spacer width="10" height="10" id="s3"/>
+                            <af:separator id="s2"/>
+                            <af:outputText value="Show Message in ADF" id="ot2"
+                                           inlineStyle="font-size:xx-large;"/>
+                            <af:button text="Show JS Alert" id="b3" actionDelivery="none">
+                                <af:clientListener type="mouseDown" method="displayJSAlert"/>
+                            </af:button>
+                            <af:button text="Show Faces Message" id="b4"
+                                       actionListener="#{MyBean.onClickShowFacesMessageBtn}"/>
+                                       
+                                       
+                            <af:button text="Show Popup" id="b5">
+                                <af:showPopupBehavior popupId="p1"/>
+                            </af:button>
+                            
+                            
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                                <af:dialog id="d2" type="ok" title="Enter Name">
+                                    <f:facet name="buttonBar"/>
+                                    <af:panelGroupLayout id="pgl3">
+                                        <af:inputText label="What is your name?" id="it1" columns="20"/>
+                                    </af:panelGroupLayout>
+                                </af:dialog>
+                            </af:popup>
+                            
+                            
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+        <f:facet name="metaContainer">
+            <af:resource type="css" source="/resources/sweetalert2.min.css"/>
+            <af:resource type="javascript" source="/resources/sweetalert2.min.js"/>
+            <af:resource type="javascript">
+                function showSweetAlert(actionEvent){
+                    Swal.fire(
+                      'Good job!',
+                      'You clicked the button!',
+                      'success'
+                    );
+                }
+                
+                function displayJSAlert(actionEvent) {
+                        alert('Hello World!');
+                }
+            </af:resource>
+        </f:facet>
+    </af:document>
+</f:view>
